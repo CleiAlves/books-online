@@ -1,0 +1,50 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.card-transition {
+    max-width: 220px;
+    width: auto; /* Remove o tamanho fixo */
+    transition: transform 0.2s, box-shadow 0.2s; /* Animação suave */
+}
+
+.card-transition:hover {
+    transform: scale(1.05); /* Efeito de zoom */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+}
+
+.card-img-top {
+    width: 220px; /* Ajuste automático ao card */
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-body{
+    padding: 6px;
+}
+
+.card-title{
+    font-weight: bold; 
+    font-size: 16px;
+}
+
+.card-bold{
+    font-weight: bold; 
+    font-size: 14px;
+}
+
+.card-text{
+    font-size: 14px;
+}
+
+.margin-card-body{
+    margin-bottom: 2px;
+}
+
+#searchInput {
+    margin-bottom: 20px;
+    font-size: 16px;
+    padding: 10px;
+}
