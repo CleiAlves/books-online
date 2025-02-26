@@ -6,7 +6,7 @@ from . import views
 app_name = 'authors'
 
 urlpatterns = [
-    path('register/', views.author_register, name='author_register'),
+    path('', views.author_register, name='authors'),
 ]
 
 

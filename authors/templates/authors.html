@@ -4,22 +4,23 @@
 
 <h2 class="text-center mb-3">Cadastre um novo autor</h2>
 
-<form class="row g-3 justify-content-center mb-5" enctype="multipart/form-data">
+<form class="row g-3 justify-content-center mb-5" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
     <div class="col-3">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nameInput" placeholder="Nome">
+            <input type="text" class="form-control" id="nameInput" placeholder="Nome" name="firstName">
             <label for="nameInput">Nome</label>
         </div>
     </div>
     <div class="col-3">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="lastNameInput" placeholder="Sobrenome">
+            <input type="text" class="form-control" id="lastNameInput" placeholder="Sobrenome" name="lastName">
             <label for="lastNameInput">Sobrenome</label>
         </div>
     </div>
     <div class="col-3">
         <div class="form-control mb-3">
-            <input type="file" class="form-control" id="photoInput">
+            <input type="file" class="form-control" id="photoInput" name="photo">
         </div>
     </div>
     <div class="col-10 text-center">
@@ -29,7 +30,7 @@
 
 <hr class="mb-5">
 
-<h3 class="text-center mb-3"> Autores Cadastrados:</h3>
+<h3 class="text-center mb-5">Autores Cadastrados:</h3>
 
 <table class="table">
     <thead class="text-center">
@@ -45,7 +46,7 @@
                 {% if author.photo %}
                     <td><img src="{{ author.photo.url }}" alt="Foto do Autor" class="table-img"></td>
                 {% else %}
-                    <td>Minha Foto</td>
+                    <td><img src="https://dummyimage.com/50x50/9e9e9e/030303.png&text=+SEM+FOTO" alt="Sem foto"></td>
                 {% endif %}
                 <td>{{ author }}</td>
                 <td>
