@@ -1,17 +1,19 @@
 from django.shortcuts import render, redirect
-from .models import Author
 from django.contrib import messages
+from .models import Author
+from .forms import AuthorForm
 
 
 def author_register(request):
-    if request.method == 'GET':
-        authors = Author.objects.all().order_by('first_name')
-        return render(request, 'authors.html', {'authors': authors})
-    elif request.method == 'POST':
-        first_name = request.POST.get('firstName')
-        last_name = request.POST.get('lastName')
-        photo = request.FILES.get('photo')
-        author = Author(first_name=first_name, last_name=last_name, photo=photo)
-        author.save()
-        messages.success(request, 'Autor(a) cadastrado com sucesso!')
-        return redirect("/authors/")
+    authors = Author.objects.all()
+    
+    if request.method == "POST":
+        form = AuthorForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Autor(a) cadastrado(a) com sucesso!')
+            return redirect("/authors/")
+    else:
+        form = AuthorForm()
+
+    return render(request, "authors.html", {"form": form, "authors": authors})
