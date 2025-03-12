@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from .models import Book
 
-# Create your views here.
+def home(request):
+    books = Book.objects.all().order_by('title')
+    return render(request, 'home.html', {'books': books})
