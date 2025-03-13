@@ -7,6 +7,7 @@ app_name = 'books'
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('book_register/', views.book_register, name='book_register'),
 ]
 
 if settings.DEBUG:
