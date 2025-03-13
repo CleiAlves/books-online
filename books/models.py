@@ -9,6 +9,7 @@ class Book(models.Model):
     year = models.CharField(max_length=4)
     genre = models.CharField(max_length=50)
     cover_image = models.ImageField(upload_to='book_covers/', blank=True, null=True)
+    synopsis = models.TextField(null=True, blank=True)
 
 
 
