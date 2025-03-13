@@ -7,29 +7,33 @@
 <div class="row row-cols-1 row-cols-md-5 g-2 justify-content-center" id="bookGrid">
     {% for book in books %}
     <div class="col">
-        <div class="card card-transition mx-auto mb-3 pt-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ book.title }}">
-            <a style="color: inherit" href="#">
+        <div class="card card-transition mx-auto mb-3 pt-3">            
+            <a style="color: inherit" href="#"> 
                 {% if book.cover_image %}
                     <img src="{{ book.cover_image.url }}" class="card-img-top" alt="Capa de {{ book.title }}">
                 {% else %}
                     <img src="https://dummyimage.com/200x250/787878/fff&text=No+image" class="card-img-top" alt="Capa de {{ book.title }}">
                 {% endif %}
-                <div class="card-body">
-                    <p class="card-title padding-card book-title text-truncate">{{ book }}</p>
-                    <div>
-                        <span class="card-bold margin-card-body">Author: </span>
-                        <span class="card-text">{{ book.author }}</span>                    
-                    </div>
-                    <div>
-                        <span class="card-bold margin-card-body">Publicação: </span>
-                        <span class="card-text">{{ book.year }}</span>
-                    </div>
-                    <div>
-                        <span class="card-bold margin-card-body">Gênero: </span>
-                        <span class="card-text">{{ book.genre }}</span>
-                    </div>
-                </div>
             </a>
+            <div class="card-body">
+                <a style="color: inherit" href="#"> 
+                    <p class="card-title-text card-title padding-card book-title text-truncate" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ book.title }}">{{ book }}</p>
+                </a>
+                <div>
+                    <span class="card-bold margin-card-body">Author: </span>
+                    <a style="color: inherit" href="#">
+                        <span class="card-author-text card-text">{{ book.author }}</span>
+                    </a>
+                </div>
+                <div>
+                    <span class="card-bold margin-card-body">Publicação: </span>
+                    <span class="card-text">{{ book.year }}</span>
+                </div>
+                <div>
+                    <span class="card-bold margin-card-body">Gênero: </span>
+                    <span class="card-text">{{ book.genre }}</span>
+                </div>
+            </div>
         </div>
     </div>
     {% endfor %}

@@ -58,6 +58,12 @@ a {
     font-size: 16px;
 }
 
+.card-author-text:hover, 
+.card-title-text:hover{
+    text-decoration: underline;
+
+}
+
 .card-bold{
     font-weight: bold; 
     font-size: 14px;
