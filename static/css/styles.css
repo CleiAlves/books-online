@@ -76,3 +76,11 @@ a {
 .margin-card-body{
     margin-bottom: 4px;
 }
+
+.footer-height {
+    height: 60px; /* Defina a altura do footer conforme necessário */
+}
+
+main {
+    padding-bottom: 60px; /* Adicione um padding-bottom igual à altura do footer */
+}

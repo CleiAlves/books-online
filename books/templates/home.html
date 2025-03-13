@@ -8,7 +8,7 @@
     {% for book in books %}
     <div class="col">
         <div class="card card-transition mx-auto mb-3 pt-3">            
-            <a style="color: inherit" href="#"> 
+            <a style="color: inherit" href="{% url 'books:book_details' book.id %}"> 
                 {% if book.cover_image %}
                     <img src="{{ book.cover_image.url }}" class="card-img-top" alt="Capa de {{ book.title }}">
                 {% else %}
@@ -16,7 +16,7 @@
                 {% endif %}
             </a>
             <div class="card-body">
-                <a style="color: inherit" href="#"> 
+                <a style="color: inherit" href="{% url 'books:book_details' book.id %}"> 
                     <p class="card-title-text card-title padding-card book-title text-truncate" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ book.title }}">{{ book }}</p>
                 </a>
                 <div>

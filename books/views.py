@@ -20,3 +20,7 @@ def book_register(request):
         form = BookForm()
 
     return render(request, "book_register.html", {"form": form, "books": books})
+
+def book_details(request, id):
+    book = Book.objects.get(id=id)
+    return render(request, "book_details.html", {"book": book})
