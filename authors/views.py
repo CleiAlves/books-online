@@ -5,7 +5,7 @@ from .forms import AuthorForm
 
 
 def author_register(request):
-    authors = Author.objects.all()
+    authors = Author.objects.all().order_by("first_name")
     
     if request.method == "POST":
         form = AuthorForm(request.POST, request.FILES)
