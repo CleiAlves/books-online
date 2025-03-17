@@ -27,7 +27,7 @@ def book_register(request):
 
 def book_details(request, id):
     book = Book.objects.get(id=id)
-    authors = Author.objects.all()
+    authors = Author.objects.all().order_by('first_name')
     return render(request, "book_details.html", {"book": book, "authors": authors})
 
 
