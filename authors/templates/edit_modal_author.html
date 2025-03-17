@@ -1,0 +1,45 @@
+<div class="modal fade" id="editAuthorModal" tabindex="-1" aria-labelledby="editAuthorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editAuthorModalLabel">Editar Autor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editAuthorForm" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3 text-center d-flex align-items-end gap-2" style="justify-content: center;">
+                        <div style="position: relative; display: inline-block;">
+                            <img id="authorPhoto" src="" alt="Foto do Autor" title="Alterar imagem" 
+                                 class="img-thumbnail" style="width: 150px; height: 150px; cursor: pointer;">
+                            <input type="file" class="form-control" id="editPhoto" name="photo" style="display: none;">
+                            
+                            <!-- Ícone da câmera -->
+                            <i class="fas fa-camera position-absolute text-white bg-dark rounded-circle p-1",
+                               style="bottom: 5px; left: 50%; transform: translateX(-50%); font-size: 16px; opacity: 0.7;">
+                            </i>
+                        </div>
+                        
+                        <button type="button" class="btn btn-danger btn-sm" id="deletePhotoButton" title="Deletar Foto">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    
+                    
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="editFirstName" name="first_name" required>
+                        <label for="editFirstName">Nome</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="editLastName" name="last_name" required>
+                        <label for="editLastName">Sobrenome</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

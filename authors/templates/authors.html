@@ -86,45 +86,8 @@
     </div>
 {% endif %}
 
-<!-- Modal -->
-<div class="modal fade" id="editAuthorModal" tabindex="-1" aria-labelledby="editAuthorModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editAuthorModalLabel">Editar Autor</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="editAuthorForm" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div class="mb-3 text-center">
-                        <img id="authorPhoto" src="" alt="Foto do Autor" class="img-thumbnail" style="width: 150px; height: 150px;">
-                        <button type="button" class="btn btn-danger " id="deletePhotoButton">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </div>
-                    <div class="mb-3 text-center">
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="editFirstName" name="first_name" required>
-                        <label for="editFirstName">Nome</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="editLastName" name="last_name" required>
-                        <label for="editLastName">Sobrenome</label>
-                    </div>
-                    <div class="form-control mb-3">
-                        <input type="file" class="form-control" id="editPhoto" name="photo">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Modal para editar autor -->
+{% include "edit_modal_author.html" %}
 
 <script src="{% static 'js/edit_author.js' %}"></script>
 

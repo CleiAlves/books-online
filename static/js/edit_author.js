@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Input de foto acionado pelo clique no label
     editPhotoInput.addEventListener('change', function() {
         const file = this.files[0];
         if (file) {
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Botão de deletar foto
     deletePhotoButton.addEventListener('click', function() {
         authorPhoto.src = 'https://dummyimage.com/150x150/9e9e9e/030303.png&text=+SEM+FOTO';
         editPhotoInput.value = '';
