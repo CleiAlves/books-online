@@ -7,6 +7,7 @@ app_name = 'authors'
 
 urlpatterns = [
     path('', views.author_register, name='authors'),
+    path('edit/<int:author_id>/', views.edit_author, name='edit_author'),
 ]
 
 

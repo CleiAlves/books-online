@@ -54,20 +54,26 @@
         </thead>
         <tbody>
             {% for author in authors %}
-            <tr class="align-middle">
-                {% if author.photo %}
-                <td><img src="{{ author.photo.url }}" alt="Foto do Autor" class="table-img"></td>
-                {% else %}
-                <td><img src="https://dummyimage.com/50x50/9e9e9e/030303.png&text=+SEM+FOTO" alt="Sem foto" class="table-img"></td>
-                {% endif %}
-                <td>{{ author }}</td>
-                <td>
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn btn-sm btn-primary py-1 px-1 me-1">Editar</a>
-                        <a href="#" class="btn btn-sm btn-danger py-1 px-1 ms-1">Excluir</a>
-                    </div>
-                </td>
-            </tr>
+                <tr class="align-middle">
+                    {% if author.photo %}
+                    <td><img src="{{ author.photo.url }}" alt="Foto do Autor" class="table-img"></td>
+                    {% else %}
+                    <td><img src="https://dummyimage.com/50x50/9e9e9e/030303.png&text=+SEM+FOTO" alt="Sem foto" class="table-img"></td>
+                    {% endif %}
+                    <td>{{ author }}</td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-sm btn-primary py-1 px-1 me-1 btn-edit" 
+                                    data-author-id="{{ author.id }}" 
+                                    data-author-first-name="{{ author.first_name }}" 
+                                    data-author-last-name="{{ author.last_name }}" 
+                                    data-author-photo-url="{% if author.photo %}{{ author.photo.url }}{% else %}https://dummyimage.com/150x150/9e9e9e/030303.png&text=+SEM+FOTO{% endif %}">
+                                Editar
+                            </button>
+                            <a href="#" class="btn btn-sm btn-danger py-1 px-1 ms-1">Excluir</a>
+                        </div>
+                    </td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
@@ -79,5 +85,47 @@
         <img src="{% static 'icons/folder.png'%}" alt="Sem foto">
     </div>
 {% endif %}
+
+<!-- Modal -->
+<div class="modal fade" id="editAuthorModal" tabindex="-1" aria-labelledby="editAuthorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editAuthorModalLabel">Editar Autor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editAuthorForm" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3 text-center">
+                        <img id="authorPhoto" src="" alt="Foto do Autor" class="img-thumbnail" style="width: 150px; height: 150px;">
+                        <button type="button" class="btn btn-danger " id="deletePhotoButton">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    <div class="mb-3 text-center">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="editFirstName" name="first_name" required>
+                        <label for="editFirstName">Nome</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="editLastName" name="last_name" required>
+                        <label for="editLastName">Sobrenome</label>
+                    </div>
+                    <div class="form-control mb-3">
+                        <input type="file" class="form-control" id="editPhoto" name="photo">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/edit_author.js' %}"></script>
 
 {% endblock content %}
