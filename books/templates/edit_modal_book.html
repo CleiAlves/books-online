@@ -1,0 +1,66 @@
+<div class="modal fade" id="editBookModal" tabindex="-1" aria-labelledby="editBookModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBookModalLabel">Editar Livro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editBookForm" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3 text-center d-flex align-items-end gap-2" style="justify-content: center;">
+                        <div style="position: relative; display: inline-block;">
+                            <img id="bookCover" src="" alt="Capa do Livro" title="Alterar imagem" 
+                                 class="img-thumbnail" style="width: 150px; height: 200px; cursor: pointer;">
+                            <input type="file" class="form-control" id="editCover" name="cover_image" style="display: none;">
+                            <input type="checkbox" name="cover_image-clear" id="cover_image-clear" style="display: none;">
+                            <!-- Ícone da câmera -->
+                            <i class="fas fa-camera position-absolute text-white bg-dark rounded-circle p-1"
+                               style="bottom: 5px; left: 50%; transform: translateX(-50%); font-size: 16px; opacity: 0.7;">
+                            </i>
+                        </div>
+                        
+                        <button type="button" class="btn btn-danger btn-sm" id="deleteCoverButton" title="Deletar Capa">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="editTitle" name="title" required>
+                                <label for="editTitle">Título</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <select class="form-control" id="editAuthor" name="author" required>
+                                    {% for author in authors %}
+                                        <option value="{{ author.id }}">{{ author }}</option>
+                                    {% endfor %}
+                                </select>
+                                <label for="editAuthor">Autor</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="editYear" name="year" required>
+                        <label for="editYear">Ano de publicação</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="editGenre" name="genre" required>
+                        <label for="editGenre">Gênero Literário</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="editSynopsis" name="synopsis" required></textarea>
+                        <label for="editSynopsis">Sinopse</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
