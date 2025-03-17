@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const editPhotoInput = document.getElementById('editPhoto');
     const authorPhoto = document.getElementById('authorPhoto');
     const deletePhotoButton = document.getElementById('deletePhotoButton');
+    const photoClearCheckbox = document.getElementById('photo-clear');
 
     editButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -23,7 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Input de foto acionado pelo clique no label
+    authorPhoto.addEventListener('click', function() {
+        editPhotoInput.click();
+    });
+
     editPhotoInput.addEventListener('change', function() {
         const file = this.files[0];
         if (file) {
@@ -35,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Botão de deletar foto
     deletePhotoButton.addEventListener('click', function() {
         authorPhoto.src = 'https://dummyimage.com/150x150/9e9e9e/030303.png&text=+SEM+FOTO';
         editPhotoInput.value = '';
+        photoClearCheckbox.checked = true;
     });
 });

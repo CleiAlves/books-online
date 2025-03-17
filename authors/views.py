@@ -23,7 +23,7 @@ def edit_author(request, author_id):
     if request.method == 'POST':
         form = AuthorForm(request.POST, request.FILES, instance=author)
         if form.is_valid():
-            if 'photo' in request.POST and not request.FILES.get('photo'):
+            if 'photo-clear' in request.POST:
                 author.photo.delete()
             form.save()
             messages.success(request, 'Autor(a) editado(a) com sucesso!')
