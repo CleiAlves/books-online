@@ -3,10 +3,38 @@
 
 {% block content %}
 
+<div class="container mt-3 d-flex justify-content-between">
+    <div class="row">
+        <!-- Campo de busca por título -->
+        <div class="col-md-6">
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fas fa-search"></i>
+                </span>
+                <input type="text" id="searchTitle" class="form-control" placeholder="Buscar por título">
+            </div>
+        </div>
+        <!-- Campo de busca por autor -->
+        <div class="col-md-6">
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fas fa-user"></i>
+                </span>
+                <select id="searchAuthor" class="form-select">
+                    <option value="">Todos os autores</option>
+                    {% for author in authors %}
+                        <option value="{{ author.id }}">{{ author }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% if books %}
-<div class="row row-cols-1 row-cols-md-5 g-2 justify-content-center" id="bookGrid">
+<div class="row row-cols-1 row-cols-md-5 g-2 justify-content-center mt-3" id="bookGrid">
     {% for book in books %}
-    <div class="col">
+    <div class="col book-card" data-title="{{ book.title|lower }}" data-author="{{ book.author.id }}">
         <div class="card card-transition mx-auto mb-3 pt-3">            
             <a style="color: inherit" href="{% url 'books:book_details' book.id %}" title="{{ book.title }}"> 
                 {% if book.cover_image %}
@@ -45,7 +73,7 @@
     </div>
 {% endif %}
 
-
+<script src="{% static 'js/filter_books.js' %}"></script>
 
 {% endblock content %}
 

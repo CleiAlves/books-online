@@ -7,7 +7,8 @@ from authors.models import Author
 
 def home(request):
     books = Book.objects.all().order_by('title')
-    return render(request, 'home.html', {'books': books})
+    authors = Author.objects.all().order_by('first_name')
+    return render(request, 'home.html', {'books': books, 'authors': authors})
 
 
 def book_register(request):
