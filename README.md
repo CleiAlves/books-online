@@ -27,7 +27,7 @@ Books Online é uma aplicação web desenvolvida com Django para gerenciar livro
 
 ## Como Executar o Projeto
 
-1. Clone o repositório e navegue para o diretório do:
+1. Clone o repositório e navegue para o diretório do projeto:
    ```bash
    git clone https://github.com/CleiAlves/books-online
    cd books-online
