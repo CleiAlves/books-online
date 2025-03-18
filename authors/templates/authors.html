@@ -70,7 +70,12 @@
                                     data-author-photo-url="{% if author.photo %}{{ author.photo.url }}{% else %}https://dummyimage.com/150x150/9e9e9e/030303.png&text=+SEM+FOTO{% endif %}">
                                 Editar
                             </button>
-                            <a href="#" class="btn btn-sm btn-danger py-1 px-1 ms-1">Excluir</a>
+                            <button type="button" class="btn btn-sm btn-danger py-1 px-1 ms-1 btn-delete" 
+                                    data-author-id="{{ author.id }}" 
+                                    data-author-name="{{ author.first_name }} {{ author.last_name }}" 
+                                    data-author-photo-url="{% if author.photo %}{{ author.photo.url }}{% else %}https://dummyimage.com/150x150/9e9e9e/030303.png&text=+SEM+FOTO{% endif %}">
+                                Deletar
+                            </button>
                         </div>
                     </td>
                 </tr>
@@ -80,15 +85,19 @@
 </div>
 
 {% else %}
-    <div class="container d-flex justify-content-center align-items-center flex-column">
-        <h5><i class="text-center">Ainda não existem autores cadastrados</i></h5>
-        <img src="{% static 'icons/folder.png'%}" alt="Sem foto">
-    </div>
+<div class="container d-flex justify-content-center align-items-center flex-column">
+    <h5><i class="text-center">Ainda não existem autores cadastrados</i></h5>
+    <img src="{% static 'icons/folder.png'%}" alt="Sem foto">
+</div>
 {% endif %}
 
 <!-- Modal para editar autor -->
 {% include "edit_modal_author.html" %}
 
+<!-- Modal para excluir autor-->
+{% include "delete_modal_author.html" %}
+
 <script src="{% static 'js/edit_author.js' %}"></script>
+<script src="{% static 'js/delete_author.js' %}"></script>
 
 {% endblock content %}

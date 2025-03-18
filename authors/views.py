@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.urls import reverse
 from .models import Author
 from .forms import AuthorForm
 
@@ -31,3 +32,11 @@ def edit_author(request, author_id):
     else:
         form = AuthorForm(instance=author)
     return render(request, 'authors.html', {'form': form, 'author': author})
+
+def delete_author(request):
+    if request.method == 'POST':
+        author_id = request.POST.get('author_id')
+        author = get_object_or_404(Author, id=author_id)
+        author.delete()
+        messages.success(request, 'Autor(a) deletado(a) com sucesso!')
+        return redirect(reverse('authors:authors'))

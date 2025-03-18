@@ -1,0 +1,22 @@
+<div class="modal fade" id="deleteAuthorModal" tabindex="-1" aria-labelledby="deleteAuthorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteAuthorModalLabel">Deseja realmente deletar <i id="deleteAuthorName"></i>?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="deleteAuthorPhoto" src="" alt="Foto do Autor" class="img-fluid mb-3" style="width: 250px; height: 250px;">
+                
+                <form id="deleteAuthorForm" method="post" action="{% url 'authors:delete_author' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="author_id" id="deleteAuthorId">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
