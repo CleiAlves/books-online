@@ -45,3 +45,12 @@ def edit_book(request, book_id):
         form = BookForm(instance=book)
     authors = Author.objects.all()
     return render(request, 'book_details.html', {'form': form, 'book': book, 'authors': authors})
+
+
+def delete_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    if request.method == 'POST':
+        book.delete()
+        messages.success(request, 'Livro deletado com sucesso!')
+        return redirect('/')
+    return render(request, 'book_details.html', {'book': book})

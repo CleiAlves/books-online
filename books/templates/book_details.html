@@ -22,7 +22,12 @@
                             data-book-cover-url="{% if book.cover_image %}{{ book.cover_image.url }}{% else %}https://dummyimage.com/150x200/9e9e9e/030303.png&text=+SEM+CAPA{% endif %}">
                         Editar
                     </button>
-                    <a href="#" class="btn btn-danger">Excluir</a>
+                    <button type="button" class="btn btn-danger btn-delete"
+                            data-book-id="{{ book.id }}"
+                            data-book-title="{{ book.title }}"
+                            data-book-cover-url="{% if book.cover_image %}{{ book.cover_image.url }}{% else %}https://dummyimage.com/200x250/9e9e9e/030303.png&text=+SEM+CAPA{% endif %}">
+                        Deletar
+                    </button>
                 </div>
             </div>
             {% if book.cover_image %}
@@ -47,7 +52,9 @@
 </div>
 
 {% include "edit_modal_book.html" %}
+{% include "delete_modal_book.html" %}
 
 <script src="{% static 'js/edit_book.js' %}"></script>
+<script src="{% static 'js/delete_book.js' %}"></script>
 
 {% endblock %}

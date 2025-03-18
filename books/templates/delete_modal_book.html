@@ -1,0 +1,22 @@
+<div class="modal fade" id="deleteBookModal" tabindex="-1" aria-labelledby="deleteBookModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteBookModalLabel">Deseja realmente deletar o livro <i id="deleteBookName"></i>?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="deleteBookPhoto" src="" alt="Capa do Livro" class="img-fluid mb-3" style="width: 200px; height: 250px;">
+                
+                <form id="deleteBookForm" method="post" action="{% url 'books:book_delete' book_id=book.id %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="book_id" id="deleteBookId">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
